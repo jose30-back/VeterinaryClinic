@@ -10,5 +10,5 @@ public class PatientController {
     public String index(){
         return "Hello Spring";
     }
-    
+   
 }

@@ -4,12 +4,14 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "patients")
 public class PatientModel {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int patientId;
+    private Long patientId;
     private String name;
     private int age;
     private String race;
@@ -17,7 +19,7 @@ public class PatientModel {
     private String treatment;
 
 
-    public PatientModel(int patientId, String name, int age, String race, String gender, String treatment) {
+    public PatientModel(Long patientId, String name, int age, String race, String gender, String treatment) {
         this.patientId = patientId;
         this.name = name;
         this.age = age;
@@ -27,12 +29,12 @@ public class PatientModel {
     }
 
 
-    public int getPatientId() {
+    public Long getPatientId() {
         return patientId;
     }
 
 
-    public void setPatientId(int patientId) {
+    public void setPatientId(Long patientId) {
         this.patientId = patientId;
     }
 
@@ -84,11 +86,7 @@ public class PatientModel {
 
     public void setTreatment(String treatment) {
         this.treatment = treatment;
-    }
-
-    
-
-    
+    }   
 
 
 }

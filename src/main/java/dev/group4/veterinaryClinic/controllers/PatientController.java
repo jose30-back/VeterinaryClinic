@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.group4.veterinaryClinic.Dtos.PatientDto;
+import dev.group4.veterinaryClinic.Models.PatientModel;
 import dev.group4.veterinaryClinic.Services.PatientService;
 
 @RestController
@@ -24,8 +25,8 @@ public class PatientController {
 
 
     @PostMapping("")
-    public PatientDto addPatient(@RequestBody PatientDto entity){
-        return entity;
+    public PatientModel addPatient(@RequestBody PatientDto entity){
+        return service.save(entity) ;
     }
 
     

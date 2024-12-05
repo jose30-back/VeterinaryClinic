@@ -28,6 +28,15 @@ public class PatientModel {
         this.treatment = treatment;
     }
 
+    public PatientModel(String name, int age, String race, String gender, String treatment) {
+        
+        this.name = name;
+        this.age = age;
+        this.race = race;
+        this.gender = gender;
+        this.treatment = treatment;
+    }
+
 
     public Long getPatientId() {
         return patientId;

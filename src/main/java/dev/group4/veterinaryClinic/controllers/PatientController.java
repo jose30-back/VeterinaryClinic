@@ -1,6 +1,9 @@
 package dev.group4.veterinaryClinic.controllers;
 
+import java.util.List;
+
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -36,6 +39,9 @@ public class PatientController {
         return ResponseEntity.status(201).body(patient);
     }
 
-    
+    @GetMapping("")
+    public List<PatientModel> listPatients(){
+        return service.findAll();
+    }
    
 }

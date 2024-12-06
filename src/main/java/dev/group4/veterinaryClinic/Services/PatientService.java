@@ -1,5 +1,7 @@
 package dev.group4.veterinaryClinic.Services;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import dev.group4.veterinaryClinic.Dtos.PatientDto;
@@ -20,6 +22,12 @@ public class PatientService {
         
         repository.save(patient);
         return patient;
+        
+    }
+
+
+    public List<PatientModel> findAll() {
+        return repository.findAll();
         
     }
 

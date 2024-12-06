@@ -1,6 +1,7 @@
 package dev.group4.veterinaryClinic.Services;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -28,6 +29,11 @@ public class PatientService {
 
     public List<PatientModel> findAll() {
         return repository.findAll();
+        
+    }
+
+    public Optional<PatientModel> findById(Long id) {
+        return repository.findById(id);
         
     }
 

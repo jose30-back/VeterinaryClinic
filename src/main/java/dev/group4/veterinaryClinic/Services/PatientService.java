@@ -15,7 +15,9 @@ public class PatientService {
     }
 
     public PatientModel save(PatientDto patientDto) {
+
         PatientModel patient = new PatientModel(patientDto.name(), patientDto.age(), patientDto.race(), patientDto.gender(), patientDto.treatment());
+        
         repository.save(patient);
         return patient;
         

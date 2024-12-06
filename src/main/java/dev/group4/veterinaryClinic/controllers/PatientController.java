@@ -1,5 +1,6 @@
 package dev.group4.veterinaryClinic.controllers;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,8 +26,14 @@ public class PatientController {
 
 
     @PostMapping("")
-    public PatientModel addPatient(@RequestBody PatientDto entity){
-        return service.save(entity) ;
+    public ResponseEntity<PatientModel>  addPatient(@RequestBody PatientDto entity){
+        PatientModel patient =  service.save(entity);
+        if (patient == null) {
+            ResponseEntity.badRequest();
+            
+        }
+
+        return ResponseEntity.status(201).body(patient);
     }
 
     

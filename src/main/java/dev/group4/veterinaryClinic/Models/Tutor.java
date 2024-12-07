@@ -2,28 +2,28 @@ package dev.group4.veterinaryClinic.Models;
 
 import jakarta.persistence.*;
 
-import java.util.List;
-
 @Entity
 @Table(name = "tutores")
-
 public class Tutor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String FirstName;
-    private String LastName;
-    private String Phone;
-//, List<PatientModel> pacientes
+    private String firstName;
+    private String lastName;
+    private String phone;
+
+    public Tutor() {}
+
+    
     public Tutor(Long id, String firstName, String lastName, String phone) {
         this.id = id;
-        FirstName = firstName;
-        LastName = lastName;
-        Phone = phone;
-        //this.pacientes = pacientes;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.phone = phone;
     }
 
+    
     public Long getId() {
         return id;
     }
@@ -33,37 +33,26 @@ public class Tutor {
     }
 
     public String getFirstName() {
-        return FirstName;
+        return firstName;
     }
 
     public void setFirstName(String firstName) {
-        FirstName = firstName;
+        this.firstName = firstName;
     }
 
     public String getLastName() {
-        return LastName;
+        return lastName;
     }
 
     public void setLastName(String lastName) {
-        LastName = lastName;
+        this.lastName = lastName;
     }
 
     public String getPhone() {
-        return Phone;
+        return phone;
     }
 
     public void setPhone(String phone) {
-        Phone = phone;
+        this.phone = phone;
     }
-
-    /* public List<PatientModel> getPacientes() {
-        return pacientes;
-    }
-
-    public void setPacientes(List<PatientModel> pacientes) {
-        this.pacientes = pacientes;
-    } */
-
-    //@OneToMany(mappedBy = "tutor", cascade = CascadeType.ALL)
-    //private List<PatientModel> pacientes; // Relación con Paciente
 }

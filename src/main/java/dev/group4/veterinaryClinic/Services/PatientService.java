@@ -3,6 +3,8 @@ package dev.group4.veterinaryClinic.Services;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import dev.group4.veterinaryClinic.Dtos.PatientDto;
@@ -37,4 +39,10 @@ public class PatientService {
         
     }
 
+
+    public void deleteById(Long id) {
+        
+        repository.deleteById(id); 
+            
+    }
 }

@@ -3,7 +3,9 @@ package dev.group4.veterinaryClinic.controllers;
 import java.util.List;
 import java.util.Optional;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -54,5 +56,18 @@ public class PatientController {
         return ResponseEntity.status(201).body(patient.get());
 
     }
+    @DeleteMapping("/{id}")
+
+    public ResponseEntity<PatientModel> deletePatient(@PathVariable Long id){
+        
+        Optional<PatientModel> patient = service.findById(id);
+        if (patient.isPresent()) {
+            service.deleteById(id); 
+            return ResponseEntity.ok(patient.get()); 
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).build(); 
+        }
+    }
+
    
 }

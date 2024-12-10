@@ -1,7 +1,14 @@
 package dev.group4.veterinaryClinic.Models;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name = "admins")
 public class AdminModel {
 
+    @Id
     private int userId;
     private String username;
     private String email;

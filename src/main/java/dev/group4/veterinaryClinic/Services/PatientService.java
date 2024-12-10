@@ -39,6 +39,11 @@ public class PatientService {
         
     }
 
+    public PatientModel update(PatientModel patient) {
+        // El repositorio actualizará el paciente existente porque tiene un ID
+        return repository.save(patient);
+    }
+
 
     public void deleteById(Long id) {
         

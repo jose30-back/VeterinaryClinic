@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -56,6 +57,30 @@ public class PatientController {
         return ResponseEntity.status(201).body(patient.get());
 
     }
+
+
+    @PutMapping("/{id}")
+    public ResponseEntity<PatientModel> updatePatient(@PathVariable Long id, @RequestBody PatientDto patientDto) {
+    
+        Optional<PatientModel> optionalPatient = service.findById(id);
+    
+        if (optionalPatient.isPresent()) {
+            PatientModel patient = optionalPatient.get();
+            patient.setName(patientDto.name());
+            patient.setAge(patientDto.age());
+            patient.setRace(patientDto.race());
+            patient.setGender(patientDto.gender());
+            patient.setTreatment(patientDto.treatment());
+            
+            PatientModel updatedPatient = service.update(patient);
+    
+            return ResponseEntity.status(200).body(updatedPatient);
+        } else {
+            return ResponseEntity.status(404).build(); 
+        }
+    }
+
+
     @DeleteMapping("/{id}")
 
     public ResponseEntity<PatientModel> deletePatient(@PathVariable Long id){
@@ -68,6 +93,9 @@ public class PatientController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build(); 
         }
     }
+
+
+    
 
    
 }

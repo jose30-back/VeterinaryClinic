@@ -15,8 +15,6 @@ public class Tutor {
     private String lastName;
     private String phone;
 
-    public Tutor() {}
-
     
     public Tutor(Long id, String firstName, String lastName, String phone, List<PatientModel> pacientes)  {
         this.id = id;

@@ -1,3 +1,4 @@
+
 package dev.group4.veterinaryClinic.Models;
 
 import jakarta.persistence.Entity;
@@ -17,18 +18,33 @@ public class PatientModel {
     private String race;
     private String gender;
     private String treatment;
+    private int chipNumber;
 
-
-    public PatientModel(Long patientId, String name, int age, String race, String gender, String treatment) {
+    public PatientModel() {
+        
+    }
+    public PatientModel(Long patientId, String name, int age, String race, String gender, String treatment, int chipNumber) {
         this.patientId = patientId;
         this.name = name;
         this.age = age;
         this.race = race;
         this.gender = gender;
         this.treatment = treatment;
+        this.chipNumber = chipNumber;
+    }
+
+    public PatientModel(String name, int age, String race, String gender, String treatment, int chipNumber) {
+        
+        this.name = name;
+        this.age = age;
+        this.race = race;
+        this.gender = gender;
+        this.treatment = treatment;
+        this.chipNumber = chipNumber;
     }
 
 
+    
     public Long getPatientId() {
         return patientId;
     }
@@ -89,4 +105,14 @@ public class PatientModel {
     }   
 
 
+
+
+    public int getChipNumber() {
+        return chipNumber;
+    }
+
+    public void setChipNumber(int chipNumber) {
+        this.chipNumber = chipNumber;
+    }
 }
+

@@ -1,14 +1,33 @@
 package dev.group4.veterinaryClinic.controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import dev.group4.veterinaryClinic.Models.PatientModel;
+import dev.group4.veterinaryClinic.Services.PatientService;
+
 @RestController
+@RequestMapping(path="${api-endpoint}/patient")
 public class PatientController {
 
-    @GetMapping("/")
-    public String index(){
-        return "Hello Spring";
+
+    private PatientService service;
+
+    
+
+    public PatientController(PatientService service) {
+        this.service = service;
     }
+
+
+
+    @PostMapping("")
+    public PatientModel addPatient(@RequestBody PatientModel Entity){
+        return Entity;
+    }
+
+    
    
 }

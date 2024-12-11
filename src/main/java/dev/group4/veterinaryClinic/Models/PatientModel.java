@@ -1,3 +1,4 @@
+
 package dev.group4.veterinaryClinic.Models;
 
 import jakarta.persistence.Entity;
@@ -111,3 +112,4 @@ public class PatientModel {
         this.chipNumber = chipNumber;
     }
 }
+

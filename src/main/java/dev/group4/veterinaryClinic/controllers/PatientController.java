@@ -22,11 +22,11 @@ import dev.group4.veterinaryClinic.Services.PatientService;
 @RequestMapping(path="${api-endpoint}/patients")
 public class PatientController {
 
+    private PatientService service;
 
     public PatientController(PatientService service) {
+        this.service=service;
     }
-
-
 
     @PostMapping("")
     public ResponseEntity<PatientModel>  addPatient(@RequestBody PatientDto entity){

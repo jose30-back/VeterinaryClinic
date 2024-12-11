@@ -13,12 +13,7 @@ import dev.group4.veterinaryClinic.Services.PatientService;
 public class PatientController {
 
 
-    private PatientService service;
-
-    
-
     public PatientController(PatientService service) {
-        this.service = service;
     }
 
 

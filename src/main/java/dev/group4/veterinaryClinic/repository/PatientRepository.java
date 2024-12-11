@@ -1,5 +1,9 @@
 package dev.group4.veterinaryClinic.repository;
 
-public class PatientRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import dev.group4.veterinaryClinic.Models.PatientModel;
+
+public interface PatientRepository extends JpaRepository<PatientModel, Long>{
 
 }

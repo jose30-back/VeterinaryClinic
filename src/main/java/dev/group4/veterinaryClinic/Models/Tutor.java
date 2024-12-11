@@ -1,5 +1,7 @@
 package dev.group4.veterinaryClinic.Models;
 
+import java.util.List;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -16,7 +18,7 @@ public class Tutor {
     public Tutor() {}
 
     
-    public Tutor(Long id, String firstName, String lastName, String phone) {
+    public Tutor(Long id, String firstName, String lastName, String phone, List<PatientModel> pacientes)  {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -55,4 +57,7 @@ public class Tutor {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+    @OneToMany(mappedBy = "tutor", cascade = CascadeType.ALL)
+    private List<PatientModel> pacientes; // Relación con Paciente
 }

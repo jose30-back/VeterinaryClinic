@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import dev.group4.veterinaryClinic.Dtos.PatientDto;
@@ -71,6 +70,7 @@ public class PatientController {
             patient.setRace(patientDto.race());
             patient.setGender(patientDto.gender());
             patient.setTreatment(patientDto.treatment());
+            patient.setChipNumber(patientDto.chipNumber());
             
             PatientModel updatedPatient = service.update(patient);
     
@@ -92,10 +92,7 @@ public class PatientController {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build(); 
         }
-    }
-
-
-    
+    }  
 
    
 }

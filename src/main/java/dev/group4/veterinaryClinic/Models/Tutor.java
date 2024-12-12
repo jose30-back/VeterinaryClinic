@@ -57,5 +57,5 @@ public class Tutor {
     }
 
     @OneToMany(mappedBy = "tutor", cascade = CascadeType.ALL)
-    private List<PatientModel> pacientes; // Relación con Paciente
+    private List<PatientModel> pacientes;
 }

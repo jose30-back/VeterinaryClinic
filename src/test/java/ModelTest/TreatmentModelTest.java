@@ -5,15 +5,16 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import dev.group4.veterinaryClinic.Models.TreatmentModel;
+import dev.group4.veterinaryClinic.Models.Treatment;
+
 
 class TreatmentModelTest {
 
-    private TreatmentModel treatmentModel;
+    private Treatment treatmentModel;
 
     @BeforeEach
     void setUp() {
-        treatmentModel = new TreatmentModel();
+        treatmentModel = new Treatment();
     }
 
     @Test

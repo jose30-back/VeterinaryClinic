@@ -43,16 +43,36 @@ public class PatientService {
     public Optional<PatientModel> findById(Long id) {
         return patientRepository.findById(id);
     }
-    public PatientModel update(PatientModel patient) {
-        
-        if (patient.getTutor() != null) {
-            Optional<Tutor> optionalTutor = tutorRepository.findById(patient.getTutor().getId());
-            if (optionalTutor.isEmpty()) {
-                throw new IllegalArgumentException("El tutor asociado no existe.");
-            }
+    public PatientModel update(Long id, PatientDto patientDto) {
+        // Buscar paciente existente
+        Optional<PatientModel> optionalPatient = patientRepository.findById(id);
+        if (optionalPatient.isEmpty()) {
+            throw new IllegalArgumentException("El paciente con ID " + id + " no existe.");
         }
+
+        PatientModel patient = optionalPatient.get();
+
+        // Verificar si el tutor existe
+        Optional<Tutor> optionalTutor = tutorRepository.findById(patientDto.tutorId());
+        if (optionalTutor.isEmpty()) {
+            throw new IllegalArgumentException("El tutor con ID " + patientDto.tutorId() + " no existe.");
+        }
+
+        Tutor tutor = optionalTutor.get();
+
+        // Actualizar los datos del paciente
+        patient.setName(patientDto.name());
+        patient.setAge(patientDto.age());
+        patient.setRace(patientDto.race());
+        patient.setGender(patientDto.gender());
+        patient.setTreatment(patientDto.treatment());
+        patient.setChipNumber(patientDto.chipNumber());
+        patient.setTutor(tutor);
+
+        // Guardar los cambios
         return patientRepository.save(patient);
     }
+
     public void deleteById(Long id) {
         patientRepository.deleteById(id);
     }

@@ -23,7 +23,19 @@ public class PatientModel {
     @JsonBackReference
     private Tutor tutor;
 
-    
+    public PatientModel() {
+        
+    }
+    public PatientModel(Long patientId, String name, int age, String race, String gender, String treatment, Tutor tutor) {
+        this.patientId = patientId;
+        this.name = name;
+        this.age = age;
+        this.race = race;
+        this.gender = gender;
+        this.treatment = treatment;
+        this.tutor = tutor;
+    }
+
     public PatientModel(String name, int age, String race, String gender, String treatment, Long chipNumber, Tutor tutor) {
         this.name = name;
         this.age = age;

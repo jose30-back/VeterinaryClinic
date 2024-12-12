@@ -6,7 +6,7 @@ public class TutorDto {
     private String lastName;
     private String phone;
 
-    // Constructor
+
     public TutorDto(Long id, String firstName, String lastName, String phone) {
         this.id = id;
         this.firstName = firstName;
@@ -14,7 +14,6 @@ public class TutorDto {
         this.phone = phone;
     }
 
-    // Getters y Setters
     public Long getId() {
         return id;
     }

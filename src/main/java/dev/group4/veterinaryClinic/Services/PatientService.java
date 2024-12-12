@@ -43,16 +43,36 @@ public class PatientService {
     public Optional<PatientModel> findById(Long id) {
         return patientRepository.findById(id);
     }
-    public PatientModel update(PatientModel patient) {
+    public PatientModel update(Long id, PatientDto patientDto) {
         
-        if (patient.getTutor() != null) {
-            Optional<Tutor> optionalTutor = tutorRepository.findById(patient.getTutor().getId());
-            if (optionalTutor.isEmpty()) {
-                throw new IllegalArgumentException("El tutor asociado no existe.");
-            }
+        Optional<PatientModel> optionalPatient = patientRepository.findById(id);
+        if (optionalPatient.isEmpty()) {
+            throw new IllegalArgumentException("El paciente con ID " + id + " no existe.");
         }
+
+        PatientModel patient = optionalPatient.get();
+
+        
+        Optional<Tutor> optionalTutor = tutorRepository.findById(patientDto.tutorId());
+        if (optionalTutor.isEmpty()) {
+            throw new IllegalArgumentException("El tutor con ID " + patientDto.tutorId() + " no existe.");
+        }
+
+        Tutor tutor = optionalTutor.get();
+
+        
+        patient.setName(patientDto.name());
+        patient.setAge(patientDto.age());
+        patient.setRace(patientDto.race());
+        patient.setGender(patientDto.gender());
+        patient.setTreatment(patientDto.treatment());
+        patient.setChipNumber(patientDto.chipNumber());
+        patient.setTutor(tutor);
+
+        
         return patientRepository.save(patient);
     }
+
     public void deleteById(Long id) {
         patientRepository.deleteById(id);
     }

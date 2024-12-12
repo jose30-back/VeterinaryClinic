@@ -44,7 +44,7 @@ public class PatientService {
         return patientRepository.findById(id);
     }
     public PatientModel update(Long id, PatientDto patientDto) {
-        // Buscar paciente existente
+        
         Optional<PatientModel> optionalPatient = patientRepository.findById(id);
         if (optionalPatient.isEmpty()) {
             throw new IllegalArgumentException("El paciente con ID " + id + " no existe.");
@@ -52,7 +52,7 @@ public class PatientService {
 
         PatientModel patient = optionalPatient.get();
 
-        // Verificar si el tutor existe
+        
         Optional<Tutor> optionalTutor = tutorRepository.findById(patientDto.tutorId());
         if (optionalTutor.isEmpty()) {
             throw new IllegalArgumentException("El tutor con ID " + patientDto.tutorId() + " no existe.");
@@ -60,7 +60,7 @@ public class PatientService {
 
         Tutor tutor = optionalTutor.get();
 
-        // Actualizar los datos del paciente
+        
         patient.setName(patientDto.name());
         patient.setAge(patientDto.age());
         patient.setRace(patientDto.race());
@@ -69,7 +69,7 @@ public class PatientService {
         patient.setChipNumber(patientDto.chipNumber());
         patient.setTutor(tutor);
 
-        // Guardar los cambios
+        
         return patientRepository.save(patient);
     }
 

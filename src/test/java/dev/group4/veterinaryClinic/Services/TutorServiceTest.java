@@ -30,15 +30,13 @@ public class TutorServiceTest {
 
 @Test
 public void testGetTutorById() {
-    // Datos simulados
     Tutor tutor = new Tutor(1L, "Mickey", "Mouse", "666438412", null);
 
     when(tutorRepository.findById(1L)).thenReturn(Optional.of(tutor));
 
-    // Ejecutar método
+    
     Tutor result = tutorService.getTutorById(1L);
 
-    // Verificar resultados
     assertNotNull(result);
     assertEquals("Mickey", result.getFirstName());
     verify(tutorRepository, times(1)).findById(1L);
@@ -48,7 +46,6 @@ public void testGetTutorById() {
 public void testGetTutorByIdNotFound() {
     when(tutorRepository.findById(1L)).thenReturn(Optional.empty());
 
-    // Verificar que lanza una excepción
     RuntimeException exception = assertThrows(RuntimeException.class, () -> {
         tutorService.getTutorById(1L);
     });

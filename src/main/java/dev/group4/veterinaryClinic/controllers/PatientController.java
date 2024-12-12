@@ -54,24 +54,15 @@ public class PatientController {
 
 
     @PutMapping("/{id}")
-    public ResponseEntity<PatientModel> updatePatient(@PathVariable Long id, @RequestBody PatientDto patientDto) {
-    
-        Optional<PatientModel> optionalPatient = service.findById(id);
-    
-        if (optionalPatient.isPresent()) {
-            PatientModel patient = optionalPatient.get();
-            patient.setName(patientDto.name());
-            patient.setAge(patientDto.age());
-            patient.setRace(patientDto.race());
-            patient.setGender(patientDto.gender());
-            patient.setTreatment(patientDto.treatment());
-            patient.setChipNumber(patientDto.chipNumber());
-            
-            PatientModel updatedPatient = service.update(patient);
-    
-            return ResponseEntity.status(200).body(updatedPatient);
-        } else {
-            return ResponseEntity.status(404).build(); 
+    public ResponseEntity<PatientModel> updatePatient(
+        @PathVariable Long id,
+        @RequestBody PatientDto patientDto
+    ) {
+        try {
+            PatientModel updatedPatient = service.update(id, patientDto);
+            return ResponseEntity.ok(updatedPatient);
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(null);
         }
     }
 

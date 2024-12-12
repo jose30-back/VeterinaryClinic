@@ -1,39 +1,20 @@
-package dev.group4.veterinaryClinic.Models;
+package dev.group4.veterinaryClinic.Dtos;
 
-import jakarta.persistence.*;
-import java.util.List;
-import com.fasterxml.jackson.annotation.JsonBackReference;
-
-@Entity
-@Table(name = "tutores")
-public class Tutor {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class TutorDto {
     private Long id;
-
     private String firstName;
     private String lastName;
     private String phone;
 
-    @OneToMany(mappedBy = "tutor", cascade = CascadeType.ALL)
-    @JsonBackReference 
-    private List<PatientModel> pacientes;
-
-
-    public Tutor() {
-    }
-
-  
-    public Tutor(Long id, String firstName, String lastName, String phone, List<PatientModel> pacientes) {
+    // Constructor
+    public TutorDto(Long id, String firstName, String lastName, String phone) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.phone = phone;
-        this.pacientes = pacientes;
     }
 
-
+    // Getters y Setters
     public Long getId() {
         return id;
     }
@@ -65,12 +46,5 @@ public class Tutor {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-
-    public List<PatientModel> getPacientes() {
-        return pacientes;
-    }
-
-    public void setPacientes(List<PatientModel> pacientes) {
-        this.pacientes = pacientes;
-    }
 }
+

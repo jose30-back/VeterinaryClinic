@@ -15,6 +15,11 @@ public class Tutor {
     private String lastName;
     private String phone;
 
+    @OneToMany(mappedBy = "tutor", cascade = CascadeType.ALL)
+    private List<PatientModel> pacientes;
+
+    public Tutor() {}
+
     
     public Tutor(Long id, String firstName, String lastName, String phone, List<PatientModel> pacientes)  {
         this.id = id;
@@ -55,7 +60,13 @@ public class Tutor {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+    public List<PatientModel> getPacientes() {
+        return pacientes;
+    }
 
-    @OneToMany(mappedBy = "tutor", cascade = CascadeType.ALL)
-    private List<PatientModel> pacientes;
+    public void setPacientes(List<PatientModel> pacientes) {
+        this.pacientes = pacientes;
+    }
 }
+
+    

@@ -11,7 +11,8 @@ import jakarta.persistence.Table;
 @Table(name = "patients")
 public class PatientModel {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long patientId;
     private String name;
     private int age;
@@ -21,9 +22,11 @@ public class PatientModel {
     private int chipNumber;
 
     public PatientModel() {
-        
+
     }
-    public PatientModel(Long patientId, String name, int age, String race, String gender, String treatment, int chipNumber) {
+
+    public PatientModel(Long patientId, String name, int age, String race, String gender, String treatment,
+            int chipNumber) {
         this.patientId = patientId;
         this.name = name;
         this.age = age;
@@ -34,7 +37,7 @@ public class PatientModel {
     }
 
     public PatientModel(String name, int age, String race, String gender, String treatment, int chipNumber) {
-        
+
         this.name = name;
         this.age = age;
         this.race = race;
@@ -43,69 +46,53 @@ public class PatientModel {
         this.chipNumber = chipNumber;
     }
 
-
-    
     public Long getPatientId() {
         return patientId;
     }
-
 
     public void setPatientId(Long patientId) {
         this.patientId = patientId;
     }
 
-
     public String getName() {
         return name;
     }
-
 
     public void setName(String name) {
         this.name = name;
     }
 
-
     public int getAge() {
         return age;
     }
-
 
     public void setAge(int age) {
         this.age = age;
     }
 
-
     public String getRace() {
         return race;
     }
-
 
     public void setRace(String race) {
         this.race = race;
     }
 
-
     public String getGender() {
         return gender;
     }
-
 
     public void setGender(String gender) {
         this.gender = gender;
     }
 
-
     public String getTreatment() {
         return treatment;
     }
 
-
     public void setTreatment(String treatment) {
         this.treatment = treatment;
-    }   
-
-
-
+    }
 
     public int getChipNumber() {
         return chipNumber;
@@ -115,4 +102,3 @@ public class PatientModel {
         this.chipNumber = chipNumber;
     }
 }
-

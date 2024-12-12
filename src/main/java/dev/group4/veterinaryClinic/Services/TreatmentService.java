@@ -6,10 +6,6 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-<<<<<<< HEAD
-=======
-//import dev.group4.veterinaryClinic.Models.TreatmentModel;
->>>>>>> e55cfdd4236d76578cbe5cfa53c6626574a0541d
 import dev.group4.veterinaryClinic.repository.TreatmentRepository;
 
 @Service

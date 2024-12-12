@@ -1,51 +1,79 @@
 package dev.group4.veterinaryClinic.Services;
-
 import java.util.List;
 import java.util.Optional;
-
-
 import org.springframework.stereotype.Service;
-
 import dev.group4.veterinaryClinic.Dtos.PatientDto;
 import dev.group4.veterinaryClinic.Models.PatientModel;
+import dev.group4.veterinaryClinic.Models.Tutor;
 import dev.group4.veterinaryClinic.repository.PatientRepository;
+import dev.group4.veterinaryClinic.repository.TutorRepository;
 
 @Service
 public class PatientService {
-    private PatientRepository repository;
+    private PatientRepository patientRepository;
+    private TutorRepository tutorRepository;
 
-    public PatientService(PatientRepository repository) {
-        this.repository = repository;
+    public PatientService(PatientRepository patientRepository, TutorRepository tutorRepository) {
+        this.patientRepository = patientRepository;
+        this.tutorRepository = tutorRepository;
     }
-
     public PatientModel save(PatientDto patientDto) {
-
-        PatientModel patient = new PatientModel(patientDto.name(), patientDto.age(), patientDto.race(), patientDto.gender(), patientDto.treatment(), patientDto.chipNumber());
         
-        repository.save(patient);
+        Optional<Tutor> optionalTutor = tutorRepository.findById(patientDto.tutorId());
+        if (optionalTutor.isEmpty()) {
+            throw new IllegalArgumentException("El tutor con ID " + patientDto.tutorId() + " no existe.");
+        }
+        Tutor tutor = optionalTutor.get();
+        
+        PatientModel patient = new PatientModel(
+            patientDto.name(),
+            patientDto.age(),
+            patientDto.race(),
+            patientDto.gender(),
+            patientDto.treatment(),
+            patientDto.chipNumber(),
+            tutor
+        );
+        patientRepository.save(patient);
         return patient;
-        
     }
-
-
     public List<PatientModel> findAll() {
-        return repository.findAll();
-        
+        return patientRepository.findAll();
     }
-
     public Optional<PatientModel> findById(Long id) {
-        return repository.findById(id);
+        return patientRepository.findById(id);
+    }
+    public PatientModel update(Long id, PatientDto patientDto) {
         
-    }
+        Optional<PatientModel> optionalPatient = patientRepository.findById(id);
+        if (optionalPatient.isEmpty()) {
+            throw new IllegalArgumentException("El paciente con ID " + id + " no existe.");
+        }
 
-    public PatientModel update(PatientModel patient) {
-        return repository.save(patient);
-    }
+        PatientModel patient = optionalPatient.get();
 
+        
+        Optional<Tutor> optionalTutor = tutorRepository.findById(patientDto.tutorId());
+        if (optionalTutor.isEmpty()) {
+            throw new IllegalArgumentException("El tutor con ID " + patientDto.tutorId() + " no existe.");
+        }
+
+        Tutor tutor = optionalTutor.get();
+
+        
+        patient.setName(patientDto.name());
+        patient.setAge(patientDto.age());
+        patient.setRace(patientDto.race());
+        patient.setGender(patientDto.gender());
+        patient.setTreatment(patientDto.treatment());
+        patient.setChipNumber(patientDto.chipNumber());
+        patient.setTutor(tutor);
+
+        
+        return patientRepository.save(patient);
+    }
 
     public void deleteById(Long id) {
-        
-        repository.deleteById(id); 
-            
+        patientRepository.deleteById(id);
     }
 }

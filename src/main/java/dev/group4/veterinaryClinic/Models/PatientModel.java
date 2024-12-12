@@ -24,7 +24,7 @@ public class PatientModel {
     private Tutor tutor;
 
     public PatientModel() {
-        
+
     }
     public PatientModel(Long patientId, String name, int age, String race, String gender, String treatment, Tutor tutor) {
         this.patientId = patientId;

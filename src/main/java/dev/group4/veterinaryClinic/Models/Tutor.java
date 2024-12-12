@@ -65,7 +65,6 @@ public class Tutor {
     public void setPhone(String phone) {
         this.phone = phone;
     }
-
     public List<PatientModel> getPacientes() {
         return pacientes;
     }
@@ -74,3 +73,5 @@ public class Tutor {
         this.pacientes = pacientes;
     }
 }
+
+    

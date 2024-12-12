@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 import dev.group4.veterinaryClinic.Models.Tutor;
 import dev.group4.veterinaryClinic.repository.TutorRepository;
 
-
 @Service
 public class TutorService {
     @Autowired
@@ -34,10 +33,8 @@ public class TutorService {
         existingTutor.setPhone(tutor.getPhone());
         return tutorRepository.save(existingTutor);
     }
-    
 
     public void deleteTutor(Long id) {
         tutorRepository.deleteById(id);
     }
 }
-

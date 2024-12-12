@@ -11,7 +11,7 @@ import dev.group4.veterinaryClinic.Services.TutorService;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/tutores")
+@RequestMapping(path="${api-endpoint}/tutores")
 public class TutorController {
     @Autowired
     private TutorService tutorService;

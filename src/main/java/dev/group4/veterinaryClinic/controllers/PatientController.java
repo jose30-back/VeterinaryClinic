@@ -53,7 +53,7 @@ public class PatientController {
     }
 
 
-    @PutMapping("/{id}")
+   /* @PutMapping("/{id}")
     public ResponseEntity<PatientModel> updatePatient(@PathVariable Long id, @RequestBody PatientDto patientDto) {
     
         Optional<PatientModel> optionalPatient = service.findById(id);
@@ -73,7 +73,7 @@ public class PatientController {
         } else {
             return ResponseEntity.status(404).build(); 
         }
-    }
+    }*/
 
 
     @DeleteMapping("/{id}")

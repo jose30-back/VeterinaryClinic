@@ -118,4 +118,8 @@ public class PatientModel {
     public void setTutor(Tutor tutor) {
         this.tutor = tutor;
     }
+    public Short getId() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getId'");
+    }
 }
